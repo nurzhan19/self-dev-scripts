@@ -11,7 +11,6 @@ from randomSeed import is_prime, generate_primes, calculate_checksum, process_pi
 def test_is_prime(number, expected):
     assert is_prime(number) == expected
 
-
 def test_generate_primes_length():
     prime_numbers_list = generate_primes(1000)
     assert len(prime_numbers_list) == 1000
@@ -26,5 +25,9 @@ def test_calculate_checksum():
     assert calculate_checksum(numbers) == 6012369
 
 def test_process_pipeline():
-    result = process_pipeline()
-    assert result == 7785816
+    count = 10
+    seed = 100
+    expected_checksum = 7785816
+
+    result = process_pipeline(count, seed)
+    assert result == expected_checksum
