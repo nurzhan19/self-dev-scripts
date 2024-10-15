@@ -1,5 +1,6 @@
 import random as rnd
 from typing import List as Lst
+import argparse
 
 def is_prime(value: int) -> bool:
     if value <= 1:
@@ -25,13 +26,22 @@ def calculate_checksum(numbers: Lst[int]) -> int:
         checksum_result = (checksum_result * 113) % 10000007
     return checksum_result
 
-def process_pipeline() -> int:
-    prime_numbers = generate_primes(1000)
-    rnd.seed(100)
+def process_pipeline(count: int, seed: int) -> int:
+    prime_numbers = generate_primes(count)
+    rnd.seed(seed)
     rnd.shuffle(prime_numbers)
+    
+    for number in prime_numbers:
+        print(number)
+    
     return calculate_checksum(prime_numbers)
 
-
 if __name__ == "__main__":
-    result = process_pipeline()
+    parser = argparse.ArgumentParser(description='Генерация простых чисел и вычисление контрольной суммы.')
+    parser.add_argument('count', type=int, help='Количество простых чисел для генерации')
+    parser.add_argument('seed', type=int, help='Начальное значение для генерации случайных чисел')
+    
+    args = parser.parse_args()
+    
+    result = process_pipeline(args.count, args.seed)
     print(f"Контрольная сумма: {result}")
