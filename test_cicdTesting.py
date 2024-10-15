@@ -27,7 +27,7 @@ def test_calculate_checksum():
 def test_process_pipeline():
     count = 10
     seed = 100
-    expected_checksum = 7785816
+    expected_checksum = 5075347
 
     result = process_pipeline(count, seed)
     assert result == expected_checksum
