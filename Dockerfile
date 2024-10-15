@@ -4,4 +4,4 @@ WORKDIR /app
 
 COPY randomSeed.py .
 
-CMD ["python", "randomSeed.py", "1000", "100"]
+ENTRYPOINT ["python", "randomSeed.py"]
